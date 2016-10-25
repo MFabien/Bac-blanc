@@ -1,3 +1,4 @@
+<?php session_start();?>
 <DOCTYPE html>
     <html>
     <head>
@@ -8,11 +9,14 @@
     <body>
 
     <?php
-    session_start();
+
+    include 'header.php';
     ?>
     <a href="index.php">Accueil</a>
 
     <form action='' method='post'>
+        <label>Titre:</label><br>
+        <input type="text" name="titre"><br>
         <label>Lien:</label><br>
         <input type="text" name="lien"><br>
         <label>mot_de_passe(falcultatif):</label><br>
@@ -25,13 +29,14 @@
     <?php include 'config.php';
 
     if (isset($_POST['addvideo'])){
-        $lien = (isset($_POST['lien'])) ? $_POST['lien'] : "";
-        $mdp = (isset($_POST['mdp'])) ? $_POST['mdp'] : "";
+        $titre =  $_POST['titre'];
+        $lien = $_POST['lien'];
+        $mdp = $_POST['mdp'];
 
-        $sql = "INSERT INTO video VALUES(null,'".$lien."','".$mdp."')";
 
+        $sql = "INSERT INTO video (titre,lien,mot_de_passe)VALUES('".$titre."','".$lien."','".$mdp."')";
         if($dbconnexion->query($sql)){
-            echo "ok";
+            echo "Video envoyer";
 
         }else{
             echo "echec";
@@ -44,7 +49,7 @@
     }
 
     ?>
-    </form>
+
 
     </body>
     </html>
