@@ -1,18 +1,5 @@
-<DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Bac blanc</title>
-    </head>
-
-    <body>
-
-    <?php
-    session_start();
-    ?>
-<a href="index.php">Accueil</a>
-
-    <form action='' method='post'>
+<?php include'index.php'?>
+<form action='' method='post'>
         <label>votre prénom:</label><br>
         <input type="text" name="prenom"><br>
         <label>votre nom:</label><br>
@@ -29,15 +16,15 @@
     <?php include 'config.php';
 
     if (isset($_POST['addUser'])){
-        $firstname = (isset($_POST['firstname'])) ? $_POST['firstname'] : "";
-        $lastname = (isset($_POST['lastname'])) ? $_POST['lastname'] : "";
+        $prenom = (isset($_POST['prenom'])) ? $_POST['prenom'] : "";
+        $nom = (isset($_POST['nom'])) ? $_POST['nom'] : "";
         $email = (isset($_POST['email'])) ? $_POST['email'] : "";
         $password = (isset($_POST['password'])) ? $_POST['password'] : "";
 
-        $sql = "INSERT INTO Admin VALUES(null,'".$firstname."','".$lastname."','".$email."','".$password."')";
+        $sql = "INSERT INTO Admin VALUES(null,'".$prenom."','".$nom."','".$email."','".$password."')";
 
-        if($dbconnexion->query( $sql)){
-            echo "ok";
+        if($dbconnexion->query($sql)){
+            echo "compte crée";
 
         }else{
             echo "echec";
@@ -52,5 +39,3 @@
     ?>
     </form>
 
-    </body>
-    </html>
