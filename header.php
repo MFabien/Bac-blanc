@@ -1,8 +1,6 @@
 <?php
 session_start();
-$_SESSION['logged'] = false;
 $LOGGED = $_SESSION['logged'];
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,76 +8,63 @@ $LOGGED = $_SESSION['logged'];
 
     <title>Bac Blanc</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 
 </head>
 <body>
 
-<div class="container">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
+
+                <?php
+
+                if ($_SESSION['logged'])
+                {
+                    $LOGGED = $_SESSION['logged'];
+                }
+                else
+                {
+                    $_SESSION['logged']= False;
+                    $LOGGED = $_SESSION['logged'];
+                }
+
+                if($LOGGED)
+                {
+                    echo
+                        '  
+                            <li><a href="ajout_video.php">Ajout vidéo</a></li>
+                            <li><a href="ajout_categorie.php">Ajout categorie</a></li>
+                            '.$_SESSION['nom'].' '.$_SESSION['prenom'].'
+                            <a href="deconnexion.php"><button>Deconnexion</button></a>';
+                }
+                else
+                {
+                    ?>
+
+                    <li><a href='ajout_admin.php'>Inscription</a></li>
+                    <li><a href='connexion.php'>Connexion</a></li>
+
+                    <?php
+                }
 
 
-
-    <div class="row">
-
-        <form action=""method="post" class="col-md-offset-10">
-            <label>email</label><br>
-            <input type="email"name="email"><br>
-            <label>mot de passe</label><br>
-            <input type="password"name="mot_de_passe"><br>
-            <input type="submit"name="login" value="connexion">
-            <a href="creation.php">Crée un compte</a>
-        </form>
-        <nav>
-            <ul>
-                <li><a href="ajout_video.php">Mais vidéo</a></li>
-            </ul>
-        </nav>
-
+                ?>
+            </ul></ul>
     </div>
+</nav>
+
+</ul>
 </div>
-<?php include 'config.php';
-
-if(isset($_POST)&& !empty($_POST['login']) && !empty($_POST['pass'])){
-    extract($_POST);
-    $login = $_POST['login'];
-    $pass = $_POST['pass'];
-}
-if (isset($_POST['login'])){
-    $pemail = (isset($_POST['email'])) ? $_POST['email'] : "";
-    $ppassword = (isset($_POST['mot_de_passe'])) ? $_POST['mot_de_passe'] : "";
-
-    $sql = "SELECT prenom, nom, email, mot_de_passe FROM Admin";
-
-    $result = $dbconnexion->query($sql);
-
-    if($result->rowCount($result)>0){
-        while($row = $result->fetch()){
-
-            if(($row['email'] === $pemail) && ($row['mot_de_passe']===$ppassword)){
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['mot_de_passe'] = $row['mot_de_passe'];
-                $_SESSION['prenom'] = $row['prenom'];
-                $_SESSION['nom'] = $row['nom'];
-                $_SESSION['logged'] = true;
-                $LOGGED = $_SESSION['logged'];
-
-
-            }
-        }
-
-
-    }
-
-}
-
-if($LOGGED){
-
-    echo $_SESSION['nom'].' '.$_SESSION['prenom'].'<input type="submit" name="logout" value="deconexion">';
-}
-
-?>
-
-
+</nav>
 </body>
-</html>
+
