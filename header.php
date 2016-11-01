@@ -7,12 +7,8 @@ $LOGGED = $_SESSION['logged'];
 <head>
 
     <title>Bac Blanc</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <link href="header.css" rel="stylesheet">
 
 
 </head>
@@ -25,7 +21,7 @@ $LOGGED = $_SESSION['logged'];
         </div>
         <ul class="nav navbar-nav navbar-right">
             <ul class="nav navbar-nav">
-
+                <li><a href="video.php">Vidéo</a></li>
                 <?php
 
                 if ($_SESSION['logged'])
@@ -44,8 +40,9 @@ $LOGGED = $_SESSION['logged'];
                         '  
                             <li><a href="ajout_video.php">Ajout vidéo</a></li>
                             <li><a href="ajout_categorie.php">Ajout categorie</a></li>
+                            <span style="color:#7FFFD4" >
                             '.$_SESSION['nom'].' '.$_SESSION['prenom'].'
-                            <a href="deconnexion.php"><button>Deconnexion</button></a>';
+                            <a href="deconnexion.php"><button>Deconnexion</button></a></span>';
                 }
                 else
                 {
@@ -59,11 +56,14 @@ $LOGGED = $_SESSION['logged'];
 
 
                 ?>
-            </ul></ul>
+            </ul>
+        </ul>
     </div>
 </nav>
+</div>
+</div>
 
-</ul>
+
 </div>
 </nav>
 </body>

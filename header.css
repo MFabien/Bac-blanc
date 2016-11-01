@@ -1,0 +1,12 @@
+body{
+    background-image: url("backround.jpg");
+    background-repeat: no-repeat;
+    background-size: 1310px;
+
+
+}
+span{
+    position: relative;
+    top:13px;
+}
+

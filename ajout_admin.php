@@ -1,5 +1,5 @@
 <?php include'index.php'?>
-<form action='' method='post'>
+<form action='' method='post' class="col-md-offset-10">
         <label>votre prénom:</label><br>
         <input type="text" name="prenom"><br>
         <label>votre nom:</label><br>
@@ -21,12 +21,15 @@
         $email = (isset($_POST['email'])) ? $_POST['email'] : "";
         $password = (isset($_POST['password'])) ? $_POST['password'] : "";
 
-        $sql = "INSERT INTO Admin VALUES(null,'".$prenom."','".$nom."','".$email."','".$password."')";
+        $sql = "INSERT INTO utilisateur VALUES(null,'".$prenom."','".$nom."','".$email."','".$password."')";
 
         if($dbconnexion->query($sql)){
             echo "compte crée";
 
-        }else{
+            header('location: index.php');
+
+        }
+        else{
             echo "echec";
         }
 

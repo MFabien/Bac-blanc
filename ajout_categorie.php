@@ -1,11 +1,12 @@
 <?php include 'index.php';?>
 
-
+    <div class="inscription">
     <form action='' method='post'>
         <label>Nom:</label><br>
         <input type="text" name="nom"><br>
         <input type="submit" name="addCategorie" value="Crée">
     </form>
+</div>
 
 <?php include 'config.php';
 

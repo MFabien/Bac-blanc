@@ -21,7 +21,7 @@ if (isset($_POST['email'])){
     $pemail = (isset($_POST['email'])) ? $_POST['email'] : "";
     $ppassword = (isset($_POST['mot_de_passe'])) ? $_POST['mot_de_passe'] : "";
 
-    $sql = "SELECT prenom, nom, email, mot_de_passe FROM Admin";
+    $sql = "SELECT prenom, nom, email, mot_de_passe FROM utilisateur";
 
     $result = $dbconnexion->query($sql);
 
@@ -40,7 +40,11 @@ if (isset($_POST['email'])){
             }
         }
 
+       header('location: index.php');
+    }
 
+    else{
+         echo 'email ou mot de passe incorect';
     }
 
 }
@@ -49,7 +53,5 @@ if (isset($_POST['email'])){
 
 
 
-/*else {
-    echo'Une erreur s\' est produite';
-}*/
+
 ?>

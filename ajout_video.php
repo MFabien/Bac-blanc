@@ -1,18 +1,4 @@
-<?php session_start();?>
-<DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Bac blanc</title>
-    </head>
-
-    <body>
-
-    <?php
-
-    include 'header.php';
-    ?>
-    <a href="index.php">Accueil</a>
+<?php include'index.php';?>
 
     <form action='' method='post'>
         <label>Titre:</label><br>
@@ -48,8 +34,6 @@
 
     }
 
+
     ?>
 
-
-    </body>
-    </html>
