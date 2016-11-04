@@ -1,3 +1,6 @@
+<?php
+include('config.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +15,15 @@
 
 </head>
 <body>
-<?php include'header.php'?>
+<?php include('header.php');?>
 <div class="container">
     <div class="row">
         <h1 class="col-md-offset-5">Bienvenu</h1>
     </div>
 </div>
+<?php
+include('ajout_video.php');
+?>
+
 </body>
 </html>
